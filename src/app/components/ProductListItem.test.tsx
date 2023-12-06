@@ -9,7 +9,13 @@ describe('ProductListItem', () => {
       id: 1, 
       name: "Test1", 
       description: "Description1", 
-      price: 10,
+      price: '10',
+      images: [
+        {
+          id: 1,
+          src: "Test1"
+        },
+      ],
       attributes: [
         {
           id: 1,

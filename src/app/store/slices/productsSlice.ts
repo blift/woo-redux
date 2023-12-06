@@ -1,5 +1,10 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 import { fetchProducts } from '../thunks/fetchProducts';
+
+type Image = {
+  id: number;
+  src: string;
+}
 
 interface Product {
   id: number;
@@ -12,7 +17,7 @@ interface Product {
     name: string;
     options: string[];
   }[];
-  images: any[];
+  images: Image[];
 }
 
 export interface ProductsState {

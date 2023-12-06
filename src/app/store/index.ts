@@ -1,15 +1,20 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { productsReducer } from "./slices/productsSlice";
-import { ProductsState } from "./slices/productsSlice";
+import { productsReducer, ProductsState } from "./slices/productsSlice";
+import { cartReducer } from "./slices/cartSlice";
+import { NotificationsState, notificationReducer } from "./slices/notificationsSlice";
 
 export interface RootState {
   product: ProductsState;
+  cart: any[];
+  notification: NotificationsState;
 }
 
 
 export const store = configureStore({
   reducer: {
     product: productsReducer,
+    cart: cartReducer,
+    notification: notificationReducer,
   },
 });
 
