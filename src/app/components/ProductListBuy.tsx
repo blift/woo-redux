@@ -1,5 +1,5 @@
 import { PlusIcon } from "@heroicons/react/20/solid"
-import { useSelector, useDispatch } from "react-redux"
+import { useDispatch } from "react-redux"
 import { addToCart } from "../store/slices/cartSlice";
 import { setNotification } from "../store/slices/notificationsSlice";
 
@@ -51,7 +51,7 @@ export default function ProductListBuy({id, name, price, images}: ProductListBuy
       className="bg-orange-500 text-white px-3 py-2 rounded-sm flex items-center gap-1 transition-colors hover:bg-orange-600"
     >
       <PlusIcon className="h-5 w-5 bg-white/20 rounded-full p-1 mr-1"/>
-      <span className="text-xs">Add to cart</span>
+     Add to cart
     </button>
   )
 

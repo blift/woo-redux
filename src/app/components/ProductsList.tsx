@@ -5,7 +5,7 @@ import { fetchProducts, RootState, AppDispatch } from "../store";
 import Spinner from "./Spinner";
 import ProductListItem from "./ProductListItem";
 
-export default function ProductList() {
+export default function ProductsList() {
 
   const dispatch = useDispatch<AppDispatch>();
 
@@ -44,9 +44,6 @@ export default function ProductList() {
       <h2 className="text-2xl uppercase text-left mb-4 font-bold">Shop</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 w-full relative">
         {products && products.length > 0 && products.map((product) => {
-          
-          console.log(product)
-          
           return (
             <ProductListItem 
               key={product.id} 

@@ -52,17 +52,13 @@ const cartSlice = createSlice({
       state, 
       action: PayloadAction<{id: number, quantity: number}>
     ) => {
-      // const index = state.cart.findIndex((item) => item.id === action.payload.id);
-      // state.cart.splice(index, 1);
-      if( state.cart.length === 1 ) {
-        state.cart = [];
-      } else {
-        const index = state.cart.findIndex((item) => item.id === action.payload.id);
+      const index = state.cart.findIndex((item) => item.id === action.payload.id);
 
-        if( index === -1 ) {
-          state.cart = [];
-        } else {
-          state.cart[index].quantity -= action.payload.quantity;
+      if( index !== -1 ) {
+        state.cart[index].quantity -= action.payload.quantity;
+
+        if( state.cart[index].quantity === 0 ) {
+          state.cart.splice(index, 1);
         }
       }
       

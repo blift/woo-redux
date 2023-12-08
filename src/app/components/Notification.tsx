@@ -7,8 +7,7 @@ export default function Notification() {
 
   const dispatch = useDispatch();
 
-  const [timer, setTimer] = useState<number>(100);
-
+  const [timer, setTimer] = useState<number>(100.0);
 
   const { visible, type, message } = useSelector((state: any) => {
     return state.notification;
@@ -28,10 +27,10 @@ export default function Notification() {
   useEffect(() => {
     let interval: ReturnType<typeof setInterval> | undefined;
     if (visible) {
-      setTimer(100); // Reset timer when notification becomes visible
+      setTimer(100.0); // Reset timer when notification becomes visible
       interval = setInterval(() => {
-        setTimer((prev) => Math.max(prev - 1, 0)); 
-      }, 60);
+        setTimer((prev) => Math.max(prev - 0.1, 0)); 
+      }, 5);
     }
     return () => {
       if (interval) clearInterval(interval);
@@ -58,7 +57,7 @@ export default function Notification() {
 
 
   if(visible && type === 'success') return (
-    <div className="bg-white w-full mx-auto left-0 right-0 max-w-[700px] shadow-lg overflow-hidden fixed top-24 z-20 py-2 px-4 rounded-md">
+    <div data-testid="alert__popup" className="alert__popup bg-white w-full mx-auto left-0 right-0 max-w-[700px] shadow-lg overflow-hidden fixed top-24 z-20 py-2 px-4 rounded-md">
       <div className="relative  flex items-center justify-cennter gap-4">
         <span className={`h-0.5 absolute -top-2  bg-green-200`}
           style={{width: `${timer}%`}}
@@ -78,7 +77,7 @@ export default function Notification() {
   )
 
   if(visible && type === 'info') return (
-    <div className="bg-white w-full mx-auto left-0 right-0 max-w-[700px] shadow-lg overflow-hidden fixed top-24 z-20 py-2 px-4 rounded-md">
+    <div data-testid="alert__popup" className="alert__popup bg-white w-full mx-auto left-0 right-0 max-w-[700px] shadow-lg overflow-hidden fixed top-24 z-20 py-2 px-4 rounded-md">
       <div className="relative  flex items-center justify-cennter gap-4">
         <span className={`h-0.5 absolute -top-2  bg-yellow-200`}
           style={{width: `${timer}%`}}
@@ -99,7 +98,7 @@ export default function Notification() {
 
   if(visible && type === 'error') {
     return (
-      <div className="bg-white w-full mx-auto left-0 right-0 max-w-[700px] shadow-lg overflow-hidden fixed top-24 z-20 py-2 px-4 rounded-md">
+      <div data-testid="alert__popup" className="alert__popup bg-white w-full mx-auto left-0 right-0 max-w-[700px] shadow-lg overflow-hidden fixed top-24 z-20 py-2 px-4 rounded-md">
         <div className="relative  flex items-center justify-cennter gap-4">
           <span className={`h-0.5 absolute -top-2  bg-red-200`}
             style={{width: `${timer}%`}}

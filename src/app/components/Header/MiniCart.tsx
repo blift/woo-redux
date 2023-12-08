@@ -3,6 +3,7 @@ import { ShoppingBagIcon } from "@heroicons/react/20/solid"
 import { useOutsideClick } from "@/app/hooks/useOutsideClick";
 import { useSelector } from "react-redux";
 import MiniCartClear from "./MiniCartClear";
+import MiniCartList from "./MiniCartList";
 
 type MiniCartComponentProps = {
   setIsOverlay: (value: boolean) => void;
@@ -39,10 +40,32 @@ export default function MiniCart({ setIsOverlay, isOverlay }: MiniCartComponentP
   };
 
 
+  // total of the items in the cart
+  const total = (): string => {
+
+    type Product = {
+      id: number;
+      quantity: number;
+    }
+
+    let total = 0;
+
+    cart.forEach((product: Product) => {
+      
+      const quantity = product.quantity;
+      total += quantity;
+      
+    })
+
+    return total.toString();
+
+  };
+
+
   return (
     <div className="relative z-20">
       <span className="absolute w-4 h-4 -left-1 text-xs flex justify-center items-center text-white bg-orange-500 rounded-full">
-        {cart.length}
+        {total()}
       </span>
       <button
         ref={btnRef}
@@ -54,13 +77,17 @@ export default function MiniCart({ setIsOverlay, isOverlay }: MiniCartComponentP
       {isOpen && (
         <div
           ref={cartRef}
-          className={`absolute transition-opacity opacity-100 top-11 right-0 bg-white rounded-md shadow-md p-2 w-72 overflow-y-auto max-h-72 border border-gray-100`}
+          className={`absolute transition-opacity opacity-100 top-11 right-0 bg-white rounded-md shadow-md p-2 w-72  max-h-[380px] border border-gray-100`}
         >
           <span className="uppercase text-xs font-bold">Cart</span>
-          {cart.length === 0 && (
+          {cart.length === 0 ? (
             <div className="flex justify-center items-center w-full h-full">
               <p className="text-sm py-4 text-gray-500">Cart is empty</p>
             </div> 
+          ) : (
+            <MiniCartList 
+              cart={cart}
+            />
           )}
           <MiniCartClear 
             cart={cart}
