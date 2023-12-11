@@ -36,11 +36,14 @@ export default function ProductListBuy({id, name, price, images}: ProductListBuy
     ));
 
     // dispatch notification
-    dispatch(setNotification({
-      visible: true,
-      message: 'Product added to cart',
-      type: 'success',
-    }));
+    dispatch(setNotification(
+      {
+        visible: true,
+        message: 'Product added to cart',
+        type: 'success',
+        key: Math.random(),
+      }
+    ));
 
   }
 

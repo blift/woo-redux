@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { TrashIcon } from "@heroicons/react/20/solid";
 import { useDispatch } from "react-redux";
 import { removeFromCart } from "@/app/store/slices/cartSlice";
+import { setNotification } from "@/app/store/slices/notificationsSlice";
 import Spinner from "../Spinner";
 
 type Product = {
@@ -44,7 +45,17 @@ export default function MiniCartList({cart}: MiniCartListProps) {
       ));
 
       setLoading(false);
+
+      dispatch(setNotification(
+        {
+          visible: true,
+          message: 'Product removed from cart',
+          type: 'info',
+          key: Math.random(),
+        }
+      ));
     }, 1000);
+
   }
 
 

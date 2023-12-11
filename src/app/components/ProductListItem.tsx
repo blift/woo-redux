@@ -30,17 +30,24 @@ const ProductListItem: React.FC<ProductListItemProps> = ({product}) => {
   const price = product?.price ? '$ ' + product.price : '--';
   const attributes = product?.attributes ? product.attributes : [];
 
+  // Strip text to 20 words
+  const stripText = (text: string): string => {
+    return text.split(' ').splice(0, 19).join(' ') + '...';
+  }
+
   return (
     <div key={product.id} className="bg-white shadow-sm p-4 rounded-lg min-h-[400px] flex flex-col justify-between">
       <div>
         <Link 
-          className="text-lg underline font-bold text-gray-700"
+          className="text-md underline font-bold text-gray-700"
           href={`${product.id}`}
         >
           {name}
         </Link>
-        <div className="my-4 text-xs" dangerouslySetInnerHTML={{ __html: description }}></div>
-        <p className="text-gray-600">{price}</p>
+        <p className="text-gray-600 my-2 text-sm">{price}</p>
+        {description === '--' ? null : (
+          <div className="my-4 text-xs" dangerouslySetInnerHTML={{ __html: stripText(description) }}></div>
+        )}
       </div>
       <div className="flex flex-col gap-2">
         <ProductListItemAttributes

@@ -25,7 +25,6 @@ const fetchProducts = createAsyncThunk(
     // Increment the page number
     const pageNumber = page + 1;
 
-
     return { data: products.data, pageNumber, hasMore };
   }
 );

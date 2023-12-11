@@ -51,6 +51,7 @@ test('Renders a notification, after click on the button', async () => {
       visible: true,
       type: 'success',
       message: 'Product added to cart',
+      key: 0,
     },
   });
 

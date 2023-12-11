@@ -1,7 +1,8 @@
-import { useState, useRef } from "react"
+import React, { useState, useRef } from "react"
 import { ShoppingBagIcon } from "@heroicons/react/20/solid"
 import { useOutsideClick } from "@/app/hooks/useOutsideClick";
-import { useSelector } from "react-redux";
+import { setNotification } from "../../store/slices/notificationsSlice";
+import { useSelector, useDispatch } from "react-redux";
 import MiniCartClear from "./MiniCartClear";
 import MiniCartList from "./MiniCartList";
 
@@ -10,6 +11,7 @@ type MiniCartComponentProps = {
   isOverlay: boolean;
 };
 
+
 export default function MiniCart({ setIsOverlay, isOverlay }: MiniCartComponentProps) {
 
   const btnRef = useRef<HTMLButtonElement>(null);
@@ -17,11 +19,21 @@ export default function MiniCart({ setIsOverlay, isOverlay }: MiniCartComponentP
 
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
+  const dispatch = useDispatch();
+
   const { cart } = useSelector((state: any) => {
     return state.cart;
   });
 
-  // console.log(cart)
+  // hide notification when cart is open
+  const hideNotification = (): void => {
+    dispatch(setNotification({
+      visible: false,
+      type: null,
+      message: '',
+      key: 0,
+    }));
+  }
 
   // outside click
   useOutsideClick({
@@ -35,6 +47,7 @@ export default function MiniCart({ setIsOverlay, isOverlay }: MiniCartComponentP
 
   // handle open cart
   const handleOpenCart = (): void => {
+    hideNotification();
     setIsOpen(!isOpen);
     setIsOverlay(!isOverlay);
   };
