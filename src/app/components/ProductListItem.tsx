@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import ProductListItemAttributes from './ProductListItemAttributes';
-import ProductListBuy from './ProductListBuy';
+import ProductListBuy from './ProductBuy';
 
 type Image = {
   id: number;
@@ -36,8 +36,20 @@ const ProductListItem: React.FC<ProductListItemProps> = ({product}) => {
   }
 
   return (
-    <div key={product.id} className="bg-white shadow-sm p-4 rounded-lg min-h-[400px] flex flex-col justify-between">
-      <div>
+    <div key={product.id} className="bg-white shadow-sm p-4 rounded-lg min-h-[400px] flex flex-col justify-between relative overflow-hidden">
+      {product.images.length > 0 ? (
+        <div className="w-full h-full mb-4 absolute top-0 left-0 z-0">
+          <img
+            src={product.images[0].src}
+            className="w-full h-full object-cover"
+          />
+        </div>
+      ) : (
+        <div className="w-full h-[200px] mb-4 flex justify-center items-center">
+          <p className="text-gray-500 text-sm">No image</p>
+        </div>
+      )}
+      <div className='z-20 relative'>
         <Link 
           className="text-md underline font-bold text-gray-700"
           href={`${product.id}`}
@@ -49,7 +61,7 @@ const ProductListItem: React.FC<ProductListItemProps> = ({product}) => {
           <div className="my-4 text-xs" dangerouslySetInnerHTML={{ __html: stripText(description) }}></div>
         )}
       </div>
-      <div className="flex flex-col gap-2">
+      <div className="flex flex-col gap-2 z-20 relative">
         <ProductListItemAttributes
           attributes={attributes}
         />

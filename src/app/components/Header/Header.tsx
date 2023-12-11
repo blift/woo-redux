@@ -10,7 +10,7 @@ export default function Header() {
   return (
     <>
       {isOverlay && (
-        <span className="fixed top-0 left-0 w-full min-h-screen bg-black/70 z-10"></span>
+        <span className="fixed top-0 left-0 w-full min-h-screen bg-black/70 z-30"></span>
       )}
       <div className="w-full flex justify-between items-center p-1 bg-white container mx-auto">
         <Link href="/">

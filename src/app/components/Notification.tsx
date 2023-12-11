@@ -59,7 +59,7 @@ export default function Notification() {
 
 
   if(visible && type === 'success') return (
-    <div data-testid="alert__popup" className="alert__popup bg-white w-full mx-auto left-0 right-0 max-w-[700px] shadow-lg overflow-hidden fixed top-24 z-20 py-2 px-4 rounded-md">
+    <div data-testid="alert__popup" className="alert__popup bg-white w-full mx-auto left-0 right-0 max-w-[700px] shadow-lg fixed top-24 z-[999]  py-2 px-4 rounded-md">
       <div className="relative  flex items-center justify-cennter gap-4">
         <span className={`h-0.5 absolute -top-2  bg-green-500`}
           style={{width: `${timer}%`}}
@@ -79,7 +79,7 @@ export default function Notification() {
   )
 
   if(visible && type === 'info') return (
-    <div data-testid="alert__popup" className="alert__popup bg-white w-full mx-auto left-0 right-0 max-w-[700px] shadow-lg overflow-hidden fixed top-24 z-20 py-2 px-4 rounded-md">
+    <div data-testid="alert__popup" className="alert__popup bg-white w-full mx-auto left-0 right-0 max-w-[700px] shadow-lg overflow-hidden fixed top-24 z-[999] py-2 px-4 rounded-md">
       <div className="relative  flex items-center justify-cennter gap-4">
         <span className={`h-0.5 absolute -top-2  bg-yellow-500`}
           style={{width: `${timer}%`}}
@@ -100,7 +100,7 @@ export default function Notification() {
 
   if(visible && type === 'error') {
     return (
-      <div data-testid="alert__popup" className="alert__popup bg-white w-full mx-auto left-0 right-0 max-w-[700px] shadow-lg overflow-hidden fixed top-24 z-20 py-2 px-4 rounded-md">
+      <div data-testid="alert__popup" className="alert__popup bg-white w-full mx-auto left-0 right-0 max-w-[700px] shadow-lg overflow-hidden fixed top-24 z-[999] py-2 px-4 rounded-md">
         <div className="relative  flex items-center justify-cennter gap-4">
           <span className={`h-0.5 absolute -top-2  bg-red-500`}
             style={{width: `${timer}%`}}

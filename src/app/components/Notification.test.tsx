@@ -1,7 +1,7 @@
 import '@testing-library/jest-dom'
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import Notification from './Notification';
-import ProductListBuy from './ProductListBuy';
+import ProductListBuy from './ProductBuy';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-redux';
 

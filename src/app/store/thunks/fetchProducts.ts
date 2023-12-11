@@ -14,7 +14,7 @@ interface ProductsResponse {
 
 const fetchProducts = createAsyncThunk(
   'products/fetchProducts',
-  async ({ page = 1, perPage = 10 }: FetchProductsArgs): Promise<ProductsResponse> => {
+  async ({ page, perPage = 10 }: FetchProductsArgs): Promise<ProductsResponse> => {
     const WooCommerce = wooInit();
 
     const products = await WooCommerce.get("products", { page, per_page: perPage });
@@ -22,8 +22,9 @@ const fetchProducts = createAsyncThunk(
     // Determine if there are more products to load
     const hasMore = products.data.length === perPage;
 
+
     // Increment the page number
-    const pageNumber = page + 1;
+    const pageNumber = page;
 
     return { data: products.data, pageNumber, hasMore };
   }

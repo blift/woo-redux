@@ -65,7 +65,16 @@ export default function MiniCartList({cart}: MiniCartListProps) {
     let total = 0;
 
     cart.forEach((product) => {
-      const price = parseFloat(product.price);
+      let price: number;
+
+      if(product?.price ) {
+        const priceToInt = parseInt(product.price);
+
+        price = priceToInt;
+      } else {
+
+        price = 1;
+      }
 
       total += price * product.quantity;
     });
@@ -85,9 +94,19 @@ export default function MiniCartList({cart}: MiniCartListProps) {
         {cart.map((product) => (
           <div key={product.id} className="flex items-center gap-2 mb-2">
             <div className="w-16 h-16 shrink-0 bg-gray-200 rounded-md relative">
+              {product.images.length > 0 ? (
+                <img
+                  src={product.images[0].src}
+                  className="w-full h-full object-cover rounded-md"
+                />
+              ) : (
+                <div className="w-full h-full flex justify-center items-center">
+                  <p className="text-gray-500 text-sm">No image</p>
+                </div>
+              )}
               <button 
                 onClick={() => handleDelete(product.id)}
-                className="absolute top-1 left-1 p-0.5 bg-red-100 w-6 h-6 rounded-full flex justify-center items-center"
+                className="absolute top-1 left-1 p-0.5 bg-red-100 w-6 h-6 rounded-full flex justify-center items-center z-20"
               >
                 <TrashIcon className="h-4 w-4 text-red-400"/>
               </button>

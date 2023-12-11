@@ -76,7 +76,7 @@ export default function MiniCart({ setIsOverlay, isOverlay }: MiniCartComponentP
 
 
   return (
-    <div className="relative z-20">
+    <div className="relative z-40">
       <span className="absolute w-4 h-4 -left-1 text-xs flex justify-center items-center text-white bg-orange-500 rounded-full">
         {total()}
       </span>

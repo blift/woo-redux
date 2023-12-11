@@ -8,24 +8,28 @@ import ProductListItem from "./ProductListItem";
 export default function ProductsList() {
 
   const dispatch = useDispatch<AppDispatch>();
-
-  useEffect(() => {
-    dispatch(fetchProducts({ page: 1, perPage: 10 }))
-  }, [dispatch])
-
-
+  
   const {products, loading, error, pageNumber, hasMore} = useSelector((state: RootState) => {
 
     return state.product;
 
   });
 
+  useEffect(() => {
+    if (!products || products.length === 0) {
+      dispatch(fetchProducts({ page: 1, perPage: 10 }));
+    }
+  }, [dispatch])
+
+
 
   const handleLoadMore = () => {
     // Current scroll position
     const currentScrollPosition = window.scrollY;
 
-    dispatch(fetchProducts({ page: pageNumber, perPage: 10 })).then(() => {
+    const incrementPageNumber = pageNumber + 1;
+
+    dispatch(fetchProducts({ page: incrementPageNumber, perPage: 10 })).then(() => {
       window.scrollTo(0, currentScrollPosition);
     });
   };
@@ -55,7 +59,7 @@ export default function ProductsList() {
       {hasMore && (
         <button 
           onClick={handleLoadMore}
-          className="bg-blue-500 text-white px-4 py-2 rounded-sm text-sm mt-4 max-w-[140px] mx-auto"
+          className="bg-transparent border-2 border-black text-black px-4 py-2 rounded-lg text-sm mt-4 max-w-[140px] mx-auto transition-colors hover:bg-black hover:text-white"
         >
           Load More
         </button>
