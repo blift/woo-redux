@@ -46,7 +46,7 @@ export default function ProductsList() {
   return (
     <div className="flex flex-col container mx-auto">
       <h2 className="text-2xl uppercase text-left mb-4 font-bold">Shop</h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 w-full relative">
+      <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 w-full relative">
         {products && products.length > 0 && products.map((product) => {
           return (
             <ProductListItem 
@@ -55,7 +55,7 @@ export default function ProductsList() {
             />
           )
         })}
-      </div>
+      </ul>
       {hasMore && (
         <button 
           onClick={handleLoadMore}

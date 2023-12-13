@@ -1,26 +1,35 @@
-import { configureStore } from "@reduxjs/toolkit";
+import { configureStore, combineReducers } from "@reduxjs/toolkit";
 import { productsReducer, ProductsState } from "./slices/productsSlice";
 import { cartReducer } from "./slices/cartSlice";
 import { NotificationsState, notificationReducer } from "./slices/notificationsSlice";
-import { singleProductReducer } from "./slices/singleProductSlice";
+import { singleProductReducer, SingleProductState } from "./slices/singleProductSlice";
 
-export interface RootState {
-  product: ProductsState;
-  cart: any[];
-  notification: NotificationsState;
-}
+// interface RootState {
+//   singleProduct: SingleProductState;
+//   product: ProductsState;
+//   cart: any[];
+//   notification: NotificationsState;
+// }
 
 
-export const store = configureStore({
-  reducer: {
-    singleProduct: singleProductReducer,
-    product: productsReducer,
-    cart: cartReducer,
-    notification: notificationReducer,
-  },
+const rootReducer = combineReducers({
+  singleProduct: singleProductReducer,
+  product: productsReducer,
+  cart: cartReducer,
+  notification: notificationReducer,
 });
 
-export type AppDispatch = typeof store.dispatch;
+export const initializeStore = (preloadedState?: Partial<RootState>) => {
+  return configureStore({
+    reducer: rootReducer,
+    preloadedState,
+  });
+};
+
+export const store = initializeStore();
+export type AppStore = ReturnType<typeof initializeStore>
+export type AppDispatch = AppStore['dispatch']
+export type RootState = ReturnType<typeof rootReducer>
 
 export * from "./thunks/fetchProducts";
 export * from "./thunks/fetchSingleProduct";

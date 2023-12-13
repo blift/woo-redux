@@ -13,6 +13,7 @@
     "@heroicons/react": "^2.0.18",
     "@reduxjs/toolkit": "^1.9.7",
     "@types/jest": "^29.5.10",
+    "@types/react-redux": "^7.1.32",
     "@types/woocommerce__woocommerce-rest-api": "^1.0.5",
     "@woocommerce/woocommerce-rest-api": "^1.0.1",
     "jest-environment-jsdom": "^29.7.0",
