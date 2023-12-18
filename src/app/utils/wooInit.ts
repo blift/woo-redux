@@ -31,7 +31,7 @@ const wooInit = (): WooCommerceRestApi => {
     consumerKey: config.CONSUMER_KEY,
     consumerSecret: config.CONSUMER_SECRET,
     version: "wc/v3",
-    queryStringAuth: true,
+    queryStringAuth: false,
   });
 
   return WooCommerce;
