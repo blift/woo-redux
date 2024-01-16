@@ -1,7 +1,9 @@
 
 # Next.js with Woocommerce
 
-This project is only education purpose to show how to use Redux Thunks  with Woocommerce API.
+:lollipop: This project is only preview purpose to show how to use Redux Thunks with Woocommerce API. Please keep it mind that in NextJS data fetching is explain in the docs:
+https://nextjs.org/docs/pages/building-your-application/data-fetching
+
 
 # Stack
 - Next.js 14
