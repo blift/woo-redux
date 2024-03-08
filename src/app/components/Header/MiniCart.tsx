@@ -12,6 +12,7 @@ type MiniCartComponentProps = {
 };
 
 
+
 export default function MiniCart({ setIsOverlay, isOverlay }: MiniCartComponentProps) {
 
   const btnRef = useRef<HTMLButtonElement>(null);

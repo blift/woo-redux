@@ -1,16 +1,8 @@
 import { configureStore, combineReducers } from "@reduxjs/toolkit";
 import { productsReducer, ProductsState } from "./slices/productsSlice";
 import { cartReducer } from "./slices/cartSlice";
-import { NotificationsState, notificationReducer } from "./slices/notificationsSlice";
-import { singleProductReducer, SingleProductState } from "./slices/singleProductSlice";
-
-// interface RootState {
-//   singleProduct: SingleProductState;
-//   product: ProductsState;
-//   cart: any[];
-//   notification: NotificationsState;
-// }
-
+import { notificationReducer } from "./slices/notificationsSlice";
+import { singleProductReducer } from "./slices/singleProductSlice";
 
 const rootReducer = combineReducers({
   singleProduct: singleProductReducer,

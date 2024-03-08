@@ -1,3 +1,5 @@
+"use client"
+
 import { useState } from "react";
 import Title from "./Title";
 import MiniCart from "./MiniCart";

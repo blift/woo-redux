@@ -1,3 +1,5 @@
+"use client"
+
 import { useState, useEffect } from "react";
 import { CheckCircleIcon, ExclamationTriangleIcon, ExclamationCircleIcon, XMarkIcon } from "@heroicons/react/20/solid";
 import { useSelector, useDispatch } from "react-redux";
